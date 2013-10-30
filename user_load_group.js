@@ -1,6 +1,6 @@
 
 require('seneca')()
-  .add({user:'load'},             user_load)
+  .add({user:'load'},              user_load)
   .add({user:'load', group:'red'}, user_load_red)
   .listen(8001)
   .proxy(8002)

@@ -8,11 +8,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/Ricebridge/websummit2013.git"
+    "url": "git://github.com/rjrodger/websummit2013.git"
   },
   "author": "Richard Rodger (http://richardrodger.com)",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/Ricebridge/websummit2013/issues"
+  "dependencies": {
+    "seneca": "~0.5.14"
   }
 }
