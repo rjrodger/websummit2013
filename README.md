@@ -24,7 +24,7 @@ $ npm install
 
 ## The _user_ Service
 
-This service combines both user load and user login into one process.
+This service combines both user load and user login into one process. Run using:
 
 
 ```sh
@@ -89,7 +89,7 @@ procedures - it's just about the content of the message.
 
 ## Splitting the Service
 
-Seneca lets you defer scaling decision until later. This avoid the
+Seneca lets you defer scaling decisions until later. This avoids the
 early accumulation of technical debt by letting you make decisions
 when you have more information.
 
@@ -99,17 +99,17 @@ right, which this example does not!), so you need to run the login
 service in a separate process.
 
 In this example, the _user_ service is split into two separate
-services, one for loading users, _user_load_, and one for logging
-users in, _user_login_. The deployment configuration is very simple -
+services, one for loading users, <i>user_load</i>, and one for logging
+users in, <i>user_login</i>. The deployment configuration is very simple -
 each service delegates to the other if it gets a message it doesn't
 understand.
 
-Run the _user_load_ service:
+Run the <i>user_load</i> service:
 ```sh
 $ node user_load.js
 ```
 
-And run the _user_login_ service (in another terminal window):
+And run the <i>user_login</i> service (in another terminal window):
 ```sh
 $ node user_login.js
 ```
@@ -135,7 +135,7 @@ $ curl "http://localhost:8002/act?user=login&name=alice&pass=123"
 ```
 
 
-The code for the _user_load_ service is:
+The code for the <i>user_load</i> service is:
 
 ```JavaScript
 require('seneca')()
@@ -156,7 +156,7 @@ function user_load(args, done){
 Only the load function is defined in this service. The user data
 remains here.  In addition to listening on port 8001, this service
 also proxies unrecognized messages to 8002, which is where you run the
-_user_login_ service:
+<i>user_login</i> service:
 
 ```JavaScript
 require('seneca')()
@@ -219,6 +219,9 @@ function user_login(args, done){
     return done();
   })
 }
+```
+
+Notice the call to _.cluster_ at the top.
 
 Run this with:
 ```sh
@@ -248,7 +251,7 @@ $ ps -ef | grep node
   501 24832 24828   0   0:00.08 ttys006    0:00.73 node user_login_cluster.js
 ```
 
-You'll see four additional processes for the _user_login_cluster_
+You'll see four additional processes for the <i>user_login_cluster_</i>
 service. The Node.js cluster module looks after distributing work to
 each of these for you.
 
@@ -317,7 +320,7 @@ the group property.
 
 ## More Information
 
-For more examples, and documentation, visit the (Seneca)[http://senecajs.org] site.
+For more examples, and documentation, visit the [Seneca](http://senecajs.org) site.
 
 If you're trying out these examples, feel free to contact me on Twitter if you
 have any questions! :) [@rjrodger](http://twitter.com/rjrodger)
